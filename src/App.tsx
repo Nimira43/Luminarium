@@ -1,6 +1,13 @@
+import UserSearch from './components/UserSearch'
+
 const App = () => {
   return (  
-    <div>Luminarium</div>
+    <div className='container'>
+      <h1 className='logo'>
+        Luminarium
+      </h1>
+      <UserSearch />
+      </div>
   )
 }
  
