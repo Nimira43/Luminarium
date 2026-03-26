@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Spirax&display=swap');
 
 :root {
   --blue-50:  #f0f6ff;
@@ -18,14 +18,15 @@
   --shadow-medium: rgba(30, 58, 138, 0.10);
   --shadow-strong: rgba(30, 58, 138, 0.15);
   --white: #fff;
+  --transitioning: all 0.5s ease-in-out;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300
 }
 
 body {
@@ -39,7 +40,8 @@ body {
 }
 
 .logo {
-  font-family: 'Bodoni Moda', serif;
+  font-family: 'Spirax', system-ui;
+  font-size: 2.4rem;
 }
 
 .container {
@@ -72,7 +74,7 @@ input[type='text'] {
   font-size: 1rem;
   border: 1px solid var(--blue-300);
   border-radius: 6px;
-  transition: 0.2s ease;
+  transition: var(--transitioning);
   width: 100%;
 }
 
@@ -87,12 +89,16 @@ button {
   font-size: 1rem;
   font-weight: 500;
   text-transform: uppercase;
-  background-color: var(--blue-accent);
+  background-color: var(--blue-750);
   color: var(--white);
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: var(--transitioning);
+}
+
+button:hover {
+  background-color: var(--blue-800);
 }
 
 .user-card {
@@ -113,13 +119,14 @@ button {
   border-radius: 50%;
   margin-bottom: 1rem;
   margin-top: 1rem;
-  border: 2px solid var(--blue-100);
+  border: 2px solid var(--dark);
 }
 
 .user-card h2 {
   margin-bottom: 0.5rem;
   font-size: 1.25rem;
-  color: var(--blue-750);
+  font-weight: 500;
+  color: var(--blue-800);
 }
 
 .bio {
@@ -137,20 +144,21 @@ button {
   background-color: var(--blue-750);
   color: var(--white);
   text-decoration: none;
+  text-transform: uppercase;
   font-size: 0.95rem;
   font-weight: 500;
   padding: 0.6rem 1.2rem;
   border-radius: 8px;
-  transition: background-color 0.2s ease;
+  transition: var(--transitioning);
   width: 100%;
   text-align: center;
   justify-content: center;
   cursor: pointer;
 }
-
+ 
 .profile-btn:hover {
   background-color: var(--blue-800);
-}
+} 
 
 .recent-searches {
   margin-top: 2rem;
