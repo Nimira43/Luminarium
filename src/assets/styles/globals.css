@@ -61,6 +61,10 @@ h1 {
   color: var(--blue-750);
 }
 
+.centre-text {
+  text-align: center;
+}
+
 .form {
   position: relative;
   display: flex;
@@ -171,9 +175,15 @@ button:hover {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--blue-650);
+  color: var(--blue-750);
   font-size: 1rem;
   margin-bottom: 1rem;
+}
+
+.recent-header h3 {
+  flex: 1;
+  text-align: center;
+  font-weight: 500;
 }
 
 .recent-searches ul {
