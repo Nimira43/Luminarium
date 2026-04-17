@@ -3,8 +3,8 @@ import { useQuery } from '@tanstack/react-query'
 import { fetchGithubUser, searchGithubUser } from '../api/github'
 import UserCard from './UserCard'
 import RecentSearches from './RecentSearches'
+import SuggestionDropdown from './SuggestionDropdown'
 import { useDebounce } from 'use-debounce'
-import type { GitHubUser } from '../types'
 
 const UserSearch = () => {
   const [username, setUsername] = useState('')
@@ -40,7 +40,10 @@ const UserSearch = () => {
     setUsername('')
 
     setRecentUsers((prev) => {
-      const updated = [trimmed, ...prev.filter((u) => u !== trimmed)]
+      const updated = [
+        trimmed,
+        ...prev.filter((u) => u !== trimmed)
+      ]
       return updated.slice(0, 5)
     })
   }
@@ -67,35 +70,27 @@ const UserSearch = () => {
             }}  
           />
           {showSuggestions && suggestions?.length > 0 && (
-            <ul className='suggestions'>
-              {suggestions
-                .slice(0, 5)
-                .map(
-                  (user: GitHubUser) => (
-                    <li
-                      key={user.login}
-                      onClick={() => {
-                        setUsername(user.login)
-                        setShowSuggestions (false)
+            <SuggestionDropdown
+              suggestions={suggestions}
+              show={showSuggestions}
+              onSelect={(selected) => {
+                setUsername(selected)
+                setShowSuggestions(false)
 
-                        if (submittedUsername !== user.login) {
-                          setSubmittedUsername(user.login)
-                        } else {
-                          refetch()
-                        }
-                      }}
-                    >
-                      <img
-                        src={user.avatar_url}
-                        alt={user.login}
-                        className='avatar-xs'
-                      />
-                      { user.login}  
-                    </li>
-                  )
-                )
-              }
-            </ul>
+                if (submittedUsername !== selected) {
+                  setSubmittedUsername(selected)
+                } else {
+                  refetch()
+                }
+                setRecentUsers((prev) => {
+                  const updated = [
+                    selected,
+                    ...prev.filter((u) => u !== selected)
+                  ]
+                  return updated.slice(0, 5)
+                })
+              }}
+            />
           )}
         </div>
         <button 
